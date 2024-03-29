@@ -12,7 +12,7 @@ CREATE TABLE category (
 CREATE TABLE subcategory (
 	subcategory_id VARCHAR(200) NOT NULL,
     subcategory VARCHAR(200) NOT NULL,
-	PRIMARY KEY (subcategory)
+	PRIMARY KEY (subcategory_id)
 );
 
 CREATE TABLE contacts (
@@ -24,7 +24,7 @@ CREATE TABLE contacts (
 );
 
 CREATE TABLE campaign (
-	cf_id PK INTEGER NOT NULL,
+	cf_id INTEGER NOT NULL,
 	contact_id INTEGER NOT NULL,
 	company_name VARCHAR(200) NOT NULL,
 	description VARCHAR(200) NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE campaign (
 	category_id VARCHAR(200) NOT NULL,
 	subcategory_id VARCHAR(200) NOT NULL,
 	PRIMARY KEY (cf_id),
-	FOREIGN KEY(contact_id) REFERENCES contacts (contact_id)
-	FOREIGN KEY(category_id) REFERENCES category (category_id)
+	FOREIGN KEY(contact_id) REFERENCES contacts (contact_id),
+	FOREIGN KEY(category_id) REFERENCES category (category_id),
 	FOREIGN KEY(subcategory_id) REFERENCES subcategory (subcategory_id)
 );
